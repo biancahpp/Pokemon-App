@@ -1,0 +1,12 @@
+<div class="Pokemon-card" *ngIf="pokemon">
+  <h1>#{{ pokemon.id }}</h1>
+  <div class="img-wrapper">
+    <img
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+        pokemon.id
+      }}.png"
+      alt=""
+    />
+  </div>
+  <p>{{ pokemon.name }}</p>
+</div>
