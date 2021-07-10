@@ -1,0 +1,11 @@
+<div class="Search-bar">
+  <div class="search-wrapper">
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      (ngModelChange)="filterPokes($event)"
+    />
+    <div class="icon-mag-glass">Icon</div>
+  </div>
+</div>
+<!-- (ngModelChange)="dataChanged($event)" -->
