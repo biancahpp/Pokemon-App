@@ -8,23 +8,31 @@ import { Pokemon } from './interfaces/pokemon';
   providedIn: 'root',
 })
 export class PokemonService {
-  originalPokeArr: Pokemon[] = [];
+  originalPokeArr: any = [];
 
   filteredPokemon: any = new BehaviorSubject(this.originalPokeArr);
 
   constructor(private http: HttpClient) {
-    this.getPokemonList().subscribe((data) => {
+    this.getPokemonList().subscribe(async (data) => {
       data.results.forEach((basicPoke) => {
         const poke = {
           name: basicPoke.name,
           url: basicPoke.url,
           id: 0,
+          weight: 0,
+          height: 0,
+          types: [],
         };
         this.getPokeInfo(basicPoke.url).subscribe((data) => {
           poke.id = data.id;
+          poke.weight = data.weight;
+          poke.height = data.height;
+          poke.types = data.types;
         });
         this.originalPokeArr.push(poke);
       });
+
+      this.originalPokeArr = await Promise.all(this.originalPokeArr);
     });
   }
 
@@ -39,5 +47,10 @@ export class PokemonService {
 
   changeFiltered(data: any) {
     this.filteredPokemon.next(data);
+  }
+
+  getPokemonById(id: number): Observable<any> {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
+    return this.http.get<any>(url);
   }
 }

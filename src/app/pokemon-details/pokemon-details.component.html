@@ -1,0 +1,23 @@
+<div class="Pokemon-details" *ngIf="poke">
+  <div class="id-wrapper">
+    <span>#{{ poke.id }}</span>
+    <div class="poke-img-wrapper">
+      <h1 class="poke-name">{{ poke.name }}</h1>
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+          poke.id
+        }}.png"
+        alt="{{ poke.name }}"
+      />
+    </div>
+    <div class="poke-info">
+      <div class="w-h-wrapper">
+        <p>Weight: {{ poke.weight }}</p>
+        <p>Height: {{ poke.height }}</p>
+      </div>
+      <div class="type-wrapper" *ngFor="let type of poke.types">
+        <p>{{ type.type.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
