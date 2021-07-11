@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../interfaces/pokemon';
 import { PokemonService } from '../pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,10 +17,10 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokemon.getPokemonById(this.id).subscribe((data: any) => {
       this.poke.name = data.name;
       this.poke.id = data.id;
+      this.poke.url = undefined;
       this.poke.weight = data.weight;
       this.poke.height = data.height;
       this.poke.types = data.types;
-      console.log(this.poke);
     });
   }
 

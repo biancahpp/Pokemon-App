@@ -45,7 +45,7 @@ export class PokemonService {
     return this.http.get<any>(url);
   }
 
-  changeFiltered(data: any) {
+  changeFiltered(data: Pokemon[]) {
     this.filteredPokemon.next(data);
   }
 
