@@ -1,16 +1,15 @@
-<div
+<mat-card
   class="Pokemon-card"
   *ngIf="pokemon"
   routerLink="/pokemon-info/{{ pokemon.id }}"
 >
-  <h1>#{{ pokemon.id }}</h1>
-  <div class="img-wrapper">
-    <img
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
-        pokemon.id
-      }}.png"
-      alt="{{ pokemon.name }}"
-    />
-  </div>
-  <p>{{ pokemon.name }}</p>
-</div>
+  <mat-card-title>#{{ pokemon.id }}</mat-card-title>
+  <img
+    mat-card-md-image
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+      pokemon.id
+    }}.png"
+    alt="{{ pokemon.name }}"
+  />
+  <mat-card-subtitle>{{ pokemon.name }}</mat-card-subtitle>
+</mat-card>

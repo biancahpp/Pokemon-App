@@ -1,11 +1,7 @@
-// .Pokemon-list {
-//   // background-color: salmon;
-//   width: 100%;
-//   height: 100%;
+.Pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-
-//   padding: 3rem;
-// }
+  padding: 3rem;
+}
