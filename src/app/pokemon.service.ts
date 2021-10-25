@@ -13,26 +13,16 @@ export class PokemonService {
   filteredPokemon: any = new BehaviorSubject(this.originalPokeArr);
 
   constructor(private http: HttpClient) {
-    this.getPokemonList().subscribe(async (data) => {
-      data.results.forEach((basicPoke) => {
+    this.getPokemonList().subscribe((data) => {
+      data.results.forEach((basicPoke, index) => {
         const poke = {
           name: basicPoke.name,
           url: basicPoke.url,
-          id: 0,
-          weight: 0,
-          height: 0,
-          types: [],
+          id: index + 1,
         };
-        this.getPokeInfo(basicPoke.url).subscribe((data) => {
-          poke.id = data.id;
-          poke.weight = data.weight;
-          poke.height = data.height;
-          poke.types = data.types;
-        });
         this.originalPokeArr.push(poke);
       });
-
-      this.originalPokeArr = await Promise.all(this.originalPokeArr);
+      console.log(this.originalPokeArr);
     });
   }
 
